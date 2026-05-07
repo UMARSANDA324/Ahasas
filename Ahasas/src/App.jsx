@@ -6,13 +6,8 @@ import WhatsAppButton from './components/ui/WhatsAppButton';
 import ScrollToTop from './components/ui/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
 
-// Lazy load pages for performance
-const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./pages/About'));
-const Services = lazy(() => import('./pages/Services'));
-const Projects = lazy(() => import('./pages/Projects'));
-const Management = lazy(() => import('./pages/Management'));
-const Contact = lazy(() => import('./pages/Contact'));
+// Pages
+const Landing = lazy(() => import('./pages/Landing'));
 const Admin = lazy(() => import('./pages/Admin'));
 
 const LoadingFallback = () => (
@@ -34,15 +29,23 @@ function AppContent() {
         <Suspense fallback={<LoadingFallback />}>
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Home />} />
+              {/* Single Page Experience */}
+              <Route path="/" element={<Landing />} />
+
+              {/* Admin Dashboard */}
+              <Route path="/admin" element={<Admin />} />
+
+              {/* Redirects for legacy routes */}
+              <Route path="/about" element={<Navigate to="/" state={{ scrollTo: 'about' }} replace />} />
+              <Route path="/services" element={<Navigate to="/" state={{ scrollTo: 'services' }} replace />} />
+              <Route path="/projects" element={<Navigate to="/" state={{ scrollTo: 'projects' }} replace />} />
+              <Route path="/management" element={<Navigate to="/" state={{ scrollTo: 'management' }} replace />} />
+              <Route path="/contact" element={<Navigate to="/" state={{ scrollTo: 'contact' }} replace />} />
+
+              {/* Common home aliases */}
               <Route path="/home" element={<Navigate to="/" replace />} />
               <Route path="/Home" element={<Navigate to="/" replace />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/management" element={<Management />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/admin" element={<Admin />} />
+
               {/* Catch-all route to redirect back home */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
