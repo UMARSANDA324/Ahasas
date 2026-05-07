@@ -1,0 +1,187 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Target, Eye, Shield, Award, Users, CheckCircle2 } from 'lucide-react';
+import ceoImage from '../assets/images/ceo-image.jpg';
+
+const About = () => {
+  const values = [
+    { icon: <Shield size={32} />, title: "Integrity", desc: "We maintain the highest standards of ethics and honesty in all our dealings." },
+    { icon: <Award size={32} />, title: "Excellence", desc: "We strive for perfection in every detail of our construction processes." },
+    { icon: <Users size={32} />, title: "Professionalism", desc: "Our team of experts delivers world-class engineering solutions." },
+    { icon: <Target size={32} />, title: "Safety", desc: "Prioritizing the health and safety of our workforce and the public." },
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="pt-24"
+    >
+      {/* Page Header */}
+      <section className="relative py-24 bg-primary overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img src="https://images.unsplash.com/photo-1503387762-592dee58c160?auto=format&fit=crop&q=80&w=2000" alt="Background" className="w-full h-full object-cover" />
+        </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-secondary font-bold tracking-[0.3em] uppercase mb-4 block"
+          >
+            Since 2025
+          </motion.span>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-extrabold text-white mb-6"
+          >
+            About AHASAS Construction
+          </motion.h1>
+          <div className="w-24 h-1.5 bg-secondary mx-auto"></div>
+        </div>
+      </section>
+
+      {/* Company Story & CEO */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-secondary/10 rounded-2xl -z-10 group-hover:bg-secondary/20 transition-colors"></div>
+              <img 
+                src={ceoImage} 
+                alt="CEO" 
+                className="w-full rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+              />
+              <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-xl">
+                <h4 className="text-xl font-bold text-primary">SHU'AIBU ADAMU HASSAN</h4>
+                <p className="text-secondary font-semibold text-sm">CEO / Director Project</p>
+              </div>
+            </div>
+            
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h2 className="heading-lg">Leading the Future of Construction in Nigeria</h2>
+                <p className="text-text-light text-lg leading-relaxed">
+                  AHASAS Construction Ventures Limited is a professional construction and infrastructure company operating in Nigeria. Registered as a Limited Liability Company on September 12, 2025 (RC 8817973), we have quickly established ourselves as a benchmark for quality and engineering excellence.
+                </p>
+                <p className="text-text-light leading-relaxed">
+                  Our commitment lies in delivering safe, high-quality, modern, and cost-effective construction services. We bridge the gap between traditional engineering standards and innovative modern techniques to create structures that stand the test of time.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                <div className="bg-gray-50 p-6 rounded-2xl border-l-4 border-secondary">
+                  <h4 className="font-bold text-primary flex items-center gap-2 mb-2">
+                    <Target className="text-secondary" size={20} /> Our Mission
+                  </h4>
+                  <p className="text-sm text-text-light">To provide innovative, safe, and sustainable construction solutions that contribute to national development.</p>
+                </div>
+                <div className="bg-gray-50 p-6 rounded-2xl border-l-4 border-secondary">
+                  <h4 className="font-bold text-primary flex items-center gap-2 mb-2">
+                    <Eye className="text-secondary" size={20} /> Our Vision
+                  </h4>
+                  <p className="text-sm text-text-light">To be the most trusted and leading construction firm in Nigeria, known for engineering excellence.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Legal Information */}
+      <section className="section-padding bg-primary text-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
+            <div className="space-y-2">
+              <p className="text-secondary text-xs uppercase tracking-widest font-bold">Company Type</p>
+              <p className="font-bold text-lg">Limited Liability</p>
+            </div>
+            <div className="space-y-2">
+              <p className="text-secondary text-xs uppercase tracking-widest font-bold">Incorporation</p>
+              <p className="font-bold text-lg">12 Sept 2025</p>
+            </div>
+            <div className="space-y-2">
+              <p className="text-secondary text-xs uppercase tracking-widest font-bold">RC Number</p>
+              <p className="font-bold text-lg">RC 8817973</p>
+            </div>
+            <div className="space-y-2">
+              <p className="text-secondary text-xs uppercase tracking-widest font-bold">TIN Number</p>
+              <p className="font-bold text-lg">33719603-0001</p>
+            </div>
+            <div className="space-y-2">
+              <p className="text-secondary text-xs uppercase tracking-widest font-bold">Banker</p>
+              <p className="font-bold text-lg">First Bank</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="section-padding bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 space-y-4">
+            <span className="text-secondary font-bold tracking-widest uppercase">Our Foundation</span>
+            <h2 className="heading-lg">The Values That Drive Us</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white p-10 rounded-2xl shadow-lg border border-gray-100 text-center hover:-translate-y-2 transition-all duration-300"
+              >
+                <div className="text-secondary mb-6 flex justify-center">{value.icon}</div>
+                <h3 className="text-xl font-bold text-primary mb-4">{value.title}</h3>
+                <p className="text-text-light text-sm leading-relaxed">{value.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Engineering Standards */}
+      <section className="section-padding bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2 space-y-8">
+              <h2 className="heading-lg">Our Infrastructure Development Goals</h2>
+              <div className="space-y-6">
+                {[
+                  "Delivering world-class civil engineering works.",
+                  "Modernizing urban landscapes through innovative building designs.",
+                  "Providing cost-effective maintenance and renovation services.",
+                  "Adhering to international engineering and safety standards.",
+                  "Empowering local talent through professional construction practices."
+                ].map((goal, idx) => (
+                  <div key={idx} className="flex gap-4 items-start group">
+                    <div className="bg-secondary/10 p-1 rounded-full text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                      <CheckCircle2 size={24} />
+                    </div>
+                    <p className="text-lg text-text-light font-medium">{goal}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="lg:w-1/2 relative">
+              <div className="grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1531834351941-a9ad3bb573ca?auto=format&fit=crop&q=80&w=600" alt="Work 1" className="rounded-2xl h-64 w-full object-cover shadow-xl mt-8" />
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=600" alt="Work 2" className="rounded-2xl h-64 w-full object-cover shadow-xl" />
+              </div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-full shadow-2xl">
+                <Award size={48} className="text-secondary" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </motion.div>
+  );
+};
+
+export default About;
