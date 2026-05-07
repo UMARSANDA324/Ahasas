@@ -62,7 +62,7 @@ const Admin = () => {
             <h1 className="text-4xl font-extrabold text-primary">Project Management</h1>
             <p className="text-text-light">Control and update your construction portfolio</p>
           </div>
-          <button 
+          <button
             onClick={() => { setIsAdding(true); resetForm(); }}
             className="btn-secondary flex items-center gap-2 shadow-xl"
           >
@@ -71,7 +71,7 @@ const Admin = () => {
         </div>
 
         {isAdding && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100 mb-12"
@@ -85,29 +85,29 @@ const Admin = () => {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-primary uppercase">Project Title</label>
-                  <input 
+                  <input
                     required
                     value={formData.title}
-                    onChange={(e) => setFormData({...formData, title: e.target.value})}
-                    className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:border-secondary" 
+                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:border-secondary"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-primary uppercase">Location</label>
-                  <input 
+                  <input
                     required
                     value={formData.location}
-                    onChange={(e) => setFormData({...formData, location: e.target.value})}
-                    className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:border-secondary" 
+                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:border-secondary"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-primary uppercase">Description</label>
-                  <textarea 
+                  <textarea
                     required
                     value={formData.description}
-                    onChange={(e) => setFormData({...formData, description: e.target.value})}
-                    rows="4" 
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    rows="4"
                     className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:border-secondary"
                   ></textarea>
                 </div>
@@ -117,9 +117,9 @@ const Admin = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-primary uppercase">Category</label>
-                    <select 
+                    <select
                       value={formData.category}
-                      onChange={(e) => setFormData({...formData, category: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                       className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:border-secondary"
                     >
                       <option>Ongoing Projects</option>
@@ -129,9 +129,9 @@ const Admin = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-primary uppercase">Status</label>
-                    <select 
+                    <select
                       value={formData.status}
-                      onChange={(e) => setFormData({...formData, status: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, status: e.target.value })}
                       className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:border-secondary"
                     >
                       <option>In Progress</option>
@@ -146,21 +146,21 @@ const Admin = () => {
                   <label className="text-sm font-bold text-primary uppercase flex justify-between">
                     Progress <span>{formData.progress}%</span>
                   </label>
-                  <input 
-                    type="range" 
+                  <input
+                    type="range"
                     min="0" max="100"
                     value={formData.progress}
-                    onChange={(e) => setFormData({...formData, progress: parseInt(e.target.value)})}
-                    className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-secondary" 
+                    onChange={(e) => setFormData({ ...formData, progress: parseInt(e.target.value) })}
+                    className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-secondary"
                   />
                 </div>
 
                 <div className="flex items-center gap-4 py-4">
-                  <input 
-                    type="checkbox" 
+                  <input
+                    type="checkbox"
                     id="featured"
                     checked={formData.featured}
-                    onChange={(e) => setFormData({...formData, featured: e.target.checked})}
+                    onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
                     className="w-5 h-5 rounded border-gray-300 text-secondary focus:ring-secondary"
                   />
                   <label htmlFor="featured" className="font-bold text-primary">Feature on Home Page</label>
@@ -176,7 +176,7 @@ const Admin = () => {
 
         <div className="grid grid-cols-1 gap-6">
           {projects.map((project) => (
-            <motion.div 
+            <motion.div
               layout
               key={project.id}
               className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 flex flex-col md:flex-row items-center gap-8 group hover:shadow-xl transition-all"
@@ -184,7 +184,7 @@ const Admin = () => {
               <div className="w-full md:w-48 h-32 rounded-xl overflow-hidden bg-gray-100 shrink-0">
                 <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover" />
               </div>
-              
+
               <div className="flex-grow space-y-1">
                 <div className="flex items-center gap-3">
                   <h3 className="text-xl font-bold text-primary">{project.title}</h3>
@@ -202,13 +202,13 @@ const Admin = () => {
               </div>
 
               <div className="flex gap-4">
-                <button 
+                <button
                   onClick={() => startEdit(project)}
                   className="p-3 bg-gray-50 text-blue-600 rounded-xl hover:bg-blue-600 hover:text-white transition-all shadow-sm"
                 >
                   <Edit3 size={20} />
                 </button>
-                <button 
+                <button
                   onClick={() => deleteProject(project.id)}
                   className="p-3 bg-gray-50 text-red-600 rounded-xl hover:bg-red-600 hover:text-white transition-all shadow-sm"
                 >

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Target, Eye, Shield, Award, Users, CheckCircle2 } from 'lucide-react';
 import ceoImage from '../assets/images/ceo-image.jpg';
 
-const About = () => {
+const About = ({ isSection = false }) => {
   const values = [
     { icon: <Shield size={32} />, title: "Integrity", desc: "We maintain the highest standards of ethics and honesty in all our dealings." },
     { icon: <Award size={32} />, title: "Excellence", desc: "We strive for perfection in every detail of our construction processes." },
@@ -16,32 +16,43 @@ const About = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-24"
+      className={isSection ? "" : "pt-24"}
     >
-      {/* Page Header */}
-      <section className="relative py-24 bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img src="https://images.unsplash.com/photo-1503387762-592dee58c160?auto=format&fit=crop&q=80&w=2000" alt="Background" className="w-full h-full object-cover" />
-        </div>
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-secondary font-bold tracking-[0.3em] uppercase mb-4 block"
-          >
-            Since 2025
-          </motion.span>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-extrabold text-white mb-6"
-          >
-            About AHASAS Construction
-          </motion.h1>
+      {/* Page Header - Only show if not in section mode */}
+      {!isSection && (
+        <section className="relative py-24 bg-primary overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1503387762-592dee58c160?auto=format&fit=crop&q=80&w=2000" alt="Background" className="w-full h-full object-cover" />
+          </div>
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-secondary font-bold tracking-[0.3em] uppercase mb-4 block"
+            >
+              Since 2025
+            </motion.span>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl md:text-6xl font-extrabold text-white mb-6"
+            >
+              About AHASAS Construction
+            </motion.h1>
+            <div className="w-24 h-1.5 bg-secondary mx-auto"></div>
+          </div>
+        </section>
+      )}
+
+      {/* Section Header - Only show if in section mode */}
+      {isSection && (
+        <div className="text-center pt-24 pb-12">
+          <span className="text-secondary font-bold tracking-[0.3em] uppercase mb-4 block">Company Profile</span>
+          <h2 className="heading-lg text-primary">About AHASAS Construction</h2>
           <div className="w-24 h-1.5 bg-secondary mx-auto"></div>
         </div>
-      </section>
+      )}
 
       {/* Company Story & CEO */}
       <section className="section-padding bg-white">
@@ -52,11 +63,11 @@ const About = () => {
               <img 
                 src={ceoImage} 
                 alt="CEO" 
-                className="w-full rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 aspect-[3/4] object-cover"
               />
-              <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-xl">
+              <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-xl border-l-4 border-secondary">
                 <h4 className="text-xl font-bold text-primary">SHU'AIBU ADAMU HASSAN</h4>
-                <p className="text-secondary font-semibold text-sm">CEO / Director Project</p>
+                <p className="text-secondary font-semibold text-sm">CEO / DIRECTOR PROJECT</p>
               </div>
             </div>
             
@@ -141,42 +152,6 @@ const About = () => {
                 <p className="text-text-light text-sm leading-relaxed">{value.desc}</p>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Engineering Standards */}
-      <section className="section-padding bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2 space-y-8">
-              <h2 className="heading-lg">Our Infrastructure Development Goals</h2>
-              <div className="space-y-6">
-                {[
-                  "Delivering world-class civil engineering works.",
-                  "Modernizing urban landscapes through innovative building designs.",
-                  "Providing cost-effective maintenance and renovation services.",
-                  "Adhering to international engineering and safety standards.",
-                  "Empowering local talent through professional construction practices."
-                ].map((goal, idx) => (
-                  <div key={idx} className="flex gap-4 items-start group">
-                    <div className="bg-secondary/10 p-1 rounded-full text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
-                      <CheckCircle2 size={24} />
-                    </div>
-                    <p className="text-lg text-text-light font-medium">{goal}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="lg:w-1/2 relative">
-              <div className="grid grid-cols-2 gap-4">
-                <img src="https://images.unsplash.com/photo-1531834351941-a9ad3bb573ca?auto=format&fit=crop&q=80&w=600" alt="Work 1" className="rounded-2xl h-64 w-full object-cover shadow-xl mt-8" />
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=600" alt="Work 2" className="rounded-2xl h-64 w-full object-cover shadow-xl" />
-              </div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-full shadow-2xl">
-                <Award size={48} className="text-secondary" />
-              </div>
-            </div>
           </div>
         </div>
       </section>
