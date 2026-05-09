@@ -17,7 +17,7 @@ const Footer = () => {
               <img src={logo} alt="Logo" className="h-16 w-16 rounded-full border-2 border-secondary group-hover:scale-110 transition-transform duration-500" />
               <div>
                 <h3 className="text-2xl font-black tracking-tighter">AHASAS</h3>
-                <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-secondary">Construction Ventures</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-secondary">Construction Ventures Limited</p>
               </div>
             </Link>
             <p className="text-gray-400 leading-relaxed font-medium">

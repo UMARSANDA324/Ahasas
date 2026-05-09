@@ -38,7 +38,7 @@ const About = ({ isSection = false }) => {
               transition={{ delay: 0.1 }}
               className="text-4xl md:text-6xl font-extrabold text-white mb-6"
             >
-              About AHASAS Construction
+              About AHASAS Construction Ventures Limited
             </motion.h1>
             <div className="w-24 h-1.5 bg-secondary mx-auto"></div>
           </div>
@@ -49,7 +49,7 @@ const About = ({ isSection = false }) => {
       {isSection && (
         <div className="text-center pt-24 pb-12">
           <span className="text-secondary font-bold tracking-[0.3em] uppercase mb-4 block">Company Profile</span>
-          <h2 className="heading-lg text-primary">About AHASAS Construction</h2>
+          <h2 className="heading-lg text-primary">About AHASAS Construction Ventures Limited</h2>
           <div className="w-24 h-1.5 bg-secondary mx-auto"></div>
         </div>
       )}
@@ -75,10 +75,10 @@ const About = ({ isSection = false }) => {
               <div className="space-y-4">
                 <h2 className="heading-lg">Leading the Future of Construction in Nigeria</h2>
                 <p className="text-text-light text-lg leading-relaxed">
-                  AHASAS Construction Ventures Limited is a professional construction and infrastructure company operating in Nigeria. Registered as a Limited Liability Company on September 12, 2025 (RC 8817973), we have quickly established ourselves as a benchmark for quality and engineering excellence.
+                  <strong>AHASAS Construction Ventures Limited</strong> is a professional building construction and civil engineering company operating in Kano, Nigeria. Registered as a Limited Liability Company on September 12, 2025 (RC 8817973), we have quickly established ourselves as a benchmark for quality and infrastructure development.
                 </p>
                 <p className="text-text-light leading-relaxed">
-                  Our commitment lies in delivering safe, high-quality, modern, and cost-effective construction services. We bridge the gap between traditional engineering standards and innovative modern techniques to create structures that stand the test of time.
+                  Our commitment lies in delivering safe, high-quality, modern, and cost-effective construction services in Kano and across Nigeria. We bridge the gap between traditional engineering standards and innovative modern techniques to create structures that stand the test of time.
                 </p>
               </div>
 

@@ -73,7 +73,7 @@ const Services = ({ isSection = false }) => {
           />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-20">
             <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tighter">Our Expert <br /><span className="text-secondary">Services</span></h1>
-            <p className="text-xl text-white/70 max-w-2xl font-medium">Delivering engineering excellence through a comprehensive suite of construction solutions across Nigeria.</p>
+            <p className="text-xl text-white/70 max-w-2xl font-medium">Delivering engineering excellence through a comprehensive suite of building construction services and infrastructure development across Nigeria by AHASAS Construction Ventures Limited.</p>
           </div>
         </section>
       )}
@@ -81,7 +81,7 @@ const Services = ({ isSection = false }) => {
       {isSection && (
         <div className="text-center pt-28 pb-16">
           <span className="text-secondary font-black tracking-[0.4em] uppercase mb-4 block text-sm">Professional Solutions</span>
-          <h2 className="text-4xl md:text-5xl font-black text-primary tracking-tight">Our Core Services</h2>
+          <h2 className="text-4xl md:text-5xl font-black text-primary tracking-tight">Core Construction Services</h2>
           <div className="w-24 h-1.5 bg-secondary mx-auto mt-6 rounded-full"></div>
         </div>
       )}
