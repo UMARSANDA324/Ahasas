@@ -71,7 +71,7 @@ const Contact = ({ isSection = false }) => {
                   { 
                     icon: <Mail className="text-secondary" />, 
                     title: "Email Us", 
-                    value: "AHASAS@GMAIL.COM",
+                    value: "AHASASCONSTRUCTIONVENTURESLTD@GMAIL.COM",
                     sub: "Official Inquiries",
                     isLink: true,
                     link: "mailto:AHASASCONSTRUCTIONVENTURESLTD@GMAIL.COM"

@@ -1,6 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Building2, Ruler, HardHat, Shield, PenTool, Wrench, ArrowRight, CheckCircle2 } from 'lucide-react';
+import buildingImg from '../assets/images/01.png';
+import civilImg from '../assets/images/Gemini_Generated_Image_6hb6xt6hb6xt6hb6.png';
+import renovationImg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (6).png';
+import projectMgmtImg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (5).png';
+import consultancyImg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (4).png';
+import contractingImg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (3).png';
+import headerBg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (2).png';
 
 const Services = ({ isSection = false }) => {
   const allServices = [
@@ -8,42 +15,42 @@ const Services = ({ isSection = false }) => {
       title: "Building Construction",
       desc: "Modern construction of residential and commercial structures using high-grade materials and precision engineering.",
       icon: <Building2 size={40} />,
-      image: "https://images.unsplash.com/photo-1541976590-71394168159b?auto=format&fit=crop&q=80&w=1200",
+      image: buildingImg,
       features: ["Structural Integrity", "Modern Architecture", "Safety Compliance", "Quality Materials"]
     },
     {
       title: "Civil Engineering Works",
       desc: "Large-scale infrastructure including road networks, bridges, and complex drainage systems across Nigeria.",
       icon: <Ruler size={40} />,
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200",
+      image: civilImg,
       features: ["Road Networks", "Bridge Engineering", "Drainage Systems", "Urban Infrastructure"]
     },
     {
       title: "Renovation & Maintenance",
       desc: "Breathe new life into existing structures with comprehensive remodeling and proactive facility maintenance.",
       icon: <Wrench size={40} />,
-      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200",
+      image: renovationImg,
       features: ["Interior Remodeling", "Structural Repairs", "System Upgrades", "Ongoing Maintenance"]
     },
     {
       title: "Project Management",
       desc: "Expert oversight ensuring timelines are met, budgets are optimized, and engineering standards are maintained.",
       icon: <HardHat size={40} />,
-      image: "https://images.unsplash.com/photo-1531834351941-a9ad3bb573ca?auto=format&fit=crop&q=80&w=1200",
+      image: projectMgmtImg,
       features: ["Timeline Tracking", "Cost Optimization", "Site Supervision", "Risk Mitigation"]
     },
     {
       title: "Construction Consultancy",
       desc: "Strategic advisory on feasibility, design optimization, and technical specifications for diverse builds.",
       icon: <PenTool size={40} />,
-      image: "https://images.unsplash.com/photo-1503387762-592dee58c160?auto=format&fit=crop&q=80&w=1200",
+      image: consultancyImg,
       features: ["Feasibility Studies", "Technical Planning", "Design Review", "Regulatory Support"]
     },
     {
       title: "General Contracting",
       desc: "Comprehensive project execution coordinating multiple teams and resources for seamless construction delivery.",
       icon: <Shield size={40} />,
-      image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1200",
+      image: contractingImg,
       features: ["Team Coordination", "Resource Procurement", "Quality Control", "End-to-End Delivery"]
     }
   ];
@@ -60,7 +67,7 @@ const Services = ({ isSection = false }) => {
         <section className="bg-primary py-24 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent z-10"></div>
           <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
+            src={headerBg}
             className="absolute inset-0 w-full h-full object-cover opacity-30"
             alt="Header Background"
           />
