@@ -87,9 +87,9 @@ const Contact = ({ isSection = false }) => {
                     <div className="mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
                     <h4 className="font-bold text-primary mb-1">{item.title}</h4>
                     {item.isLink ? (
-                      <a href={item.link} className="text-text-light hover:text-secondary transition-colors font-semibold block">{item.value}</a>
+                      <a href={item.link} className="text-text-light hover:text-secondary transition-colors font-semibold block break-all">{item.value}</a>
                     ) : (
-                      <p className="text-text-light font-semibold">{item.value}</p>
+                      <p className="text-text-light font-semibold break-words">{item.value}</p>
                     )}
                     <p className="text-xs text-gray-400 mt-1">{item.sub}</p>
                   </div>

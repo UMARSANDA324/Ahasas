@@ -8,16 +8,9 @@ import logo from '../../assets/images/logo.jpg';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { name: 'Home', path: 'home' },
@@ -28,15 +21,36 @@ const Navbar = () => {
     { name: 'Contact', path: 'contact' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      let currentSection = 'home';
+      for (const link of navLinks) {
+        const section = document.getElementById(link.path);
+        if (section && section.offsetTop <= scrollPosition) {
+          currentSection = link.path;
+        }
+      }
+      setActiveSection(currentSection);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleNavClick = (id) => {
     setIsOpen(false);
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: id } });
     } else {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     }
   };
 
@@ -82,12 +96,13 @@ const Navbar = () => {
                 key={link.name}
                 onClick={() => handleNavClick(link.path)}
                 className={cn(
-                  "font-bold text-sm tracking-widest uppercase transition-all hover:text-secondary relative group",
-                  isScrolled ? "text-primary" : "text-white"
+                  "font-bold text-sm tracking-widest uppercase transition-all relative group",
+                  isScrolled ? "text-primary hover:text-secondary" : "text-white hover:text-secondary",
+                  activeSection === link.path && "text-secondary"
                 )}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full"></span>
+                <span className={cn("absolute -bottom-1 left-0 h-0.5 bg-secondary transition-all", activeSection === link.path ? "w-full" : "w-0 group-hover:w-full")}></span>
               </button>
             ))}
             <div className="flex items-center gap-6">
@@ -124,7 +139,10 @@ const Navbar = () => {
                 <button
                   key={link.name}
                   onClick={() => handleNavClick(link.path)}
-                  className="text-xl font-black tracking-widest uppercase text-primary text-left hover:text-secondary transition-colors"
+                  className={cn(
+                    "text-xl font-black tracking-widest uppercase text-left transition-colors",
+                    activeSection === link.path ? "text-secondary" : "text-primary hover:text-secondary"
+                  )}
                 >
                   {link.name}
                 </button>
