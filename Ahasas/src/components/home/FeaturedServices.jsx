@@ -2,25 +2,28 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Building2, Pickaxe, Ruler, Settings2, ShieldCheck, Truck } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import buildingImg from '../../assets/images/01.png';
+import civilImg from '../../assets/images/Gemini_Generated_Image_6hb6xt6hb6xt6hb6.png';
+import projectMgmtImg from '../../assets/images/Gemini_Generated_Image_ievsecievsecievs (5).png';
 
 const services = [
   {
     title: "Building Construction",
     desc: "From residential homes to high-rise commercial complexes, we deliver superior structural integrity.",
     icon: <Building2 size={40} />,
-    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80&w=1000"
+    image: buildingImg
   },
   {
     title: "Civil Engineering",
     desc: "Expert design and construction of infrastructure including roads, bridges, and drainage systems.",
     icon: <Truck size={40} />,
-    image: "https://images.unsplash.com/photo-1590486803833-ffc4701248a7?auto=format&fit=crop&q=80&w=1000"
+    image: civilImg
   },
   {
     title: "Project Management",
     desc: "Professional oversight ensuring projects are delivered on time, within budget, and to spec.",
     icon: <Settings2 size={40} />,
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1000"
+    image: projectMgmtImg
   }
 ];
 

@@ -1,35 +1,57 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import heroBg from '../../assets/images/background.png';
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // If not on home page, navigate home first
+      navigate('/');
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
   return (
     <div className="relative h-screen min-h-[700px] flex items-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1541976590-71394168159b?auto=format&fit=crop&q=80&w=2000" 
+        <motion.img 
+          initial={{ scale: 1.2 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 10, ease: "easeOut" }}
+          src={heroBg} 
           alt="Modern Construction" 
-          className="w-full h-full object-cover scale-105"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-transparent"></div>
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full">
-        <div className="max-w-3xl space-y-8">
+        <div className="max-w-5xl space-y-12">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-block bg-secondary text-white text-xs md:text-sm font-bold px-4 py-2 rounded-full mb-6 tracking-widest uppercase shadow-lg">
+            <span className="inline-block bg-secondary text-white text-xs md:text-sm font-bold px-6 py-2.5 rounded-full mb-6 tracking-[0.2em] uppercase shadow-2xl border border-white/20">
               Engineering Excellence Since 2025
             </span>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight">
-              Building <span className="text-secondary">Excellence</span>, <br />
-              Engineering the <span className="relative">Future.<span className="absolute bottom-2 left-0 w-full h-2 bg-secondary/30 -z-10"></span></span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1] tracking-tight">
+              Delivering Modern <br className="hidden md:block" />
+              <span className="text-secondary drop-shadow-sm">Construction</span> <br className="hidden md:block" />
+              & Infrastructure
             </h1>
           </motion.div>
 
@@ -37,24 +59,31 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl font-medium"
+            className="text-white/90 text-xl md:text-2xl leading-relaxed max-w-4xl font-medium border-l-4 border-secondary pl-10 py-2"
           >
-            AHASAS Construction Ventures Limited delivers world-class infrastructure and building solutions across Nigeria. We combine safety, quality, and modern technology.
+            AHASAS Construction Ventures Limited: <br className="hidden lg:block" />
+            Built on Integrity, Engineered for the Future.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
+            className="flex flex-wrap items-center gap-6"
           >
-            <Link to="/projects" className="btn-secondary group flex items-center gap-3">
+            <button 
+              onClick={() => scrollToSection('projects')}
+              className="btn-secondary group flex items-center gap-3 px-10 py-4 text-lg cursor-pointer"
+            >
               View Our Projects
-              <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-            </Link>
-            <Link to="/services" className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-md px-8 py-3.5 rounded-lg font-bold transition-all border border-white/20 flex items-center gap-3">
+              <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform" />
+            </button>
+            <button 
+              onClick={() => scrollToSection('services')}
+              className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-md px-10 py-4 rounded-xl font-bold transition-all border border-white/30 flex items-center gap-3 text-lg cursor-pointer"
+            >
               Our Services
-            </Link>
+            </button>
           </motion.div>
 
           {/* Trust Indicators */}

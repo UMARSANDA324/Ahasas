@@ -1,5 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import buildingImg from '../assets/images/01.png';
+import civilImg from '../assets/images/Gemini_Generated_Image_6hb6xt6hb6xt6hb6.png';
+import renovationImg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (1).png';
 
 const useProjectStore = create(
   persist(
@@ -13,7 +16,7 @@ const useProjectStore = create(
           category: 'Completed Projects',
           status: 'Completed',
           progress: 100,
-          images: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200'],
+          images: [buildingImg],
           featured: true,
         },
         {
@@ -24,7 +27,7 @@ const useProjectStore = create(
           category: 'Ongoing Projects',
           status: 'In Progress',
           progress: 65,
-          images: ['https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=1200'],
+          images: [civilImg],
           featured: true,
         },
         {
@@ -35,7 +38,7 @@ const useProjectStore = create(
           category: 'Before & After',
           status: 'Completed',
           progress: 100,
-          images: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200'],
+          images: [renovationImg],
           featured: true,
         }
       ],

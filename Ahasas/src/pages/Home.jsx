@@ -6,6 +6,7 @@ import Hero from '../components/home/Hero';
 import Stats from '../components/home/Stats';
 import FeaturedServices from '../components/home/FeaturedServices';
 import FeaturedProjects from '../components/home/FeaturedProjects';
+import introImg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (2).png';
 
 const Home = () => {
   return (
@@ -24,7 +25,7 @@ const Home = () => {
           <div className="lg:w-1/2 relative">
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1000" 
+                src={introImg} 
                 alt="Construction Site" 
                 className="w-full h-[500px] object-cover"
               />
@@ -69,8 +70,12 @@ const Home = () => {
         </div>
       </section>
 
-      <FeaturedServices />
-      <FeaturedProjects />
+      <div id="services">
+        <FeaturedServices />
+      </div>
+      <div id="projects">
+        <FeaturedProjects />
+      </div>
 
       {/* Why Choose Us */}
       <section className="section-padding bg-primary text-white overflow-hidden relative">
