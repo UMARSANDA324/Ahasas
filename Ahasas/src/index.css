@@ -41,8 +41,8 @@
 }
 
 @layer base {
-  body {
-    @apply bg-background text-text font-sans antialiased;
+  html, body {
+    @apply bg-background text-text font-sans antialiased overflow-x-hidden w-full max-w-[100vw];
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;

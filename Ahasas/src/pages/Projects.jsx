@@ -11,7 +11,7 @@ const Projects = ({ isSection = false }) => {
 
   const filteredProjects = activeFilter === 'All' 
     ? projects 
-    : projects.filter(p => p.category === activeFilter);
+    : projects.filter(p => p.category.toLowerCase().trim() === activeFilter.toLowerCase().trim());
 
   return (
     <motion.div
@@ -47,34 +47,41 @@ const Projects = ({ isSection = false }) => {
       {/* Filter Bar */}
       <section className="bg-white py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-6 mb-20">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-6 mb-20">
             {filters.map(filter => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-500 border-2 ${
+                className={`relative px-6 md:px-10 py-3 md:py-4 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300 border-2 ${
                   activeFilter === filter 
-                    ? 'bg-secondary border-secondary text-white shadow-2xl shadow-secondary/30 scale-105' 
-                    : 'bg-white border-gray-100 text-primary hover:border-secondary/50 hover:bg-gray-50'
+                    ? 'border-secondary text-white scale-105' 
+                    : 'bg-white border-gray-100 text-primary hover:border-secondary/50'
                 }`}
               >
-                {filter}
+                {activeFilter === filter && (
+                  <motion.div 
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-secondary rounded-[inherit] shadow-xl shadow-secondary/30"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{filter}</span>
               </button>
             ))}
           </div>
 
           {/* Project Grid */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project) => (
                 <motion.div
                   layout
                   key={project.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.6 }}
-                  className="group relative bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-50 h-[500px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="group relative bg-white rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-50 h-[450px] md:h-[500px]"
                 >
                   <img 
                     src={project.images[0]} 
@@ -83,40 +90,40 @@ const Projects = ({ isSection = false }) => {
                   />
                   
                   {/* Premium Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
-                  <div className="absolute inset-0 p-10 flex flex-col justify-end text-white">
-                    <div className="space-y-6">
+                  <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-white">
+                    <div className="space-y-4 md:space-y-6">
                       <div className="flex justify-between items-start">
-                        <span className="bg-secondary px-5 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-lg">
+                        <span className="bg-secondary px-4 md:px-5 py-1.5 rounded-lg md:rounded-xl text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] shadow-lg">
                           {project.category}
                         </span>
-                        <div className="bg-white/10 backdrop-blur-xl p-3 rounded-2xl opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 duration-500 border border-white/20">
-                          <ArrowUpRight size={24} className="text-secondary" />
+                        <div className="bg-white/10 backdrop-blur-xl p-2.5 md:p-3 rounded-xl md:rounded-2xl opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 duration-500 border border-white/20">
+                          <ArrowUpRight size={20} className="text-secondary" />
                         </div>
                       </div>
                       
                       <div className="space-y-2">
-                        <h3 className="text-3xl font-black tracking-tight leading-tight">{project.title}</h3>
-                        <p className="text-white/70 text-sm font-medium line-clamp-2 leading-relaxed">{project.description}</p>
+                        <h3 className="text-2xl md:text-3xl font-black tracking-tight leading-tight">{project.title}</h3>
+                        <p className="text-white/70 text-xs md:text-sm font-medium line-clamp-2 leading-relaxed">{project.description}</p>
                       </div>
                       
-                      <div className="flex items-center gap-6 pt-6 border-t border-white/10">
-                        <div className="flex items-center gap-2.5 text-[10px] font-black uppercase tracking-widest text-white/60">
-                          <MapPin size={16} className="text-secondary" /> {project.location}
+                      <div className="flex items-center gap-4 md:gap-6 pt-4 md:pt-6 border-t border-white/10">
+                        <div className="flex items-center gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/60">
+                          <MapPin size={14} className="text-secondary" /> {project.location}
                         </div>
-                        <div className="flex items-center gap-2.5 text-[10px] font-black uppercase tracking-widest text-white/60">
-                          <Clock size={16} className="text-secondary" /> {project.status}
+                        <div className="flex items-center gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/60">
+                          <Clock size={14} className="text-secondary" /> {project.status}
                         </div>
                       </div>
 
                       {/* Progress Bar */}
-                      <div className="pt-4">
-                        <div className="flex justify-between text-[9px] font-black uppercase tracking-[0.3em] mb-2 text-secondary">
+                      <div className="pt-2 md:pt-4">
+                        <div className="flex justify-between text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] mb-2 text-secondary">
                           <span>Build Progress</span>
                           <span>{project.progress}%</span>
                         </div>
-                        <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                        <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
                           <motion.div 
                             initial={{ width: 0 }}
                             whileInView={{ width: `${project.progress}%` }}
@@ -131,6 +138,7 @@ const Projects = ({ isSection = false }) => {
               ))}
             </AnimatePresence>
           </motion.div>
+
 
           {filteredProjects.length === 0 && (
             <div className="text-center py-40 bg-gray-50 rounded-[3rem] border-2 border-dashed border-gray-200">
