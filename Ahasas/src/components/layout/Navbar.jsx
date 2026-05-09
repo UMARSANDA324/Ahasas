@@ -85,7 +85,7 @@ const Navbar = () => {
               <p className={cn(
                 "text-[10px] tracking-widest uppercase font-semibold",
                 isScrolled ? "text-secondary" : "text-secondary-light"
-              )}>Construction Ventures</p>
+              )}>Construction Ventures Limited</p>
             </div>
           </button>
 

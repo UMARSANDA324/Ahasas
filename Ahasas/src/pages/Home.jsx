@@ -7,6 +7,7 @@ import Stats from '../components/home/Stats';
 import FeaturedServices from '../components/home/FeaturedServices';
 import FeaturedProjects from '../components/home/FeaturedProjects';
 import introImg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (2).png';
+import architectPlanImg from '../assets/images/architect_flow_plan.png';
 
 const Home = () => {
   return (
@@ -26,7 +27,7 @@ const Home = () => {
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
               <img 
                 src={introImg} 
-                alt="Construction Site" 
+                alt="AHASAS Construction Site in Kano" 
                 className="w-full h-[500px] object-cover"
               />
             </div>
@@ -39,10 +40,11 @@ const Home = () => {
           
           <div className="lg:w-1/2 space-y-8">
             <div className="space-y-4">
-              <span className="text-secondary font-bold tracking-widest uppercase">Welcome to AHASAS</span>
-              <h2 className="heading-lg">Building the Future of Nigeria with Excellence</h2>
+              <h1 className="sr-only">AHASAS Construction Ventures Limited</h1>
+              <span className="text-secondary font-bold tracking-widest uppercase">Top Construction Company in Kano</span>
+              <h2 className="heading-lg">Building the Future of Nigeria with Civil Engineering Excellence</h2>
               <p className="text-text-light leading-relaxed text-lg">
-                AHASAS Construction Ventures Limited is a professional construction and infrastructure company committed to delivering safe, high-quality, and modern construction services. We combine engineering standards with professionalism to exceed client expectations.
+                <strong>AHASAS Construction Ventures Limited</strong> is a premier civil engineering company in Nigeria committed to delivering safe, high-quality, and modern building construction services. We combine rigorous engineering standards with professionalism to drive infrastructure development and exceed client expectations across Kano and beyond.
               </p>
             </div>
             
@@ -56,7 +58,7 @@ const Home = () => {
                 <div key={idx} className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
                   <div className="shrink-0">{item.icon}</div>
                   <div>
-                    <h4 className="font-bold text-primary">{item.title}</h4>
+                    <h3 className="font-bold text-primary">{item.title}</h3>
                     <p className="text-sm text-text-light">{item.desc}</p>
                   </div>
                 </div>
@@ -66,6 +68,42 @@ const Home = () => {
             <Link to="/about" className="btn-primary inline-flex items-center gap-2">
               Learn More About Us <ArrowRight size={20} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Engineering Design Section */}
+      <section className="section-padding bg-gray-50">
+        <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-16">
+          <div className="lg:w-1/2 space-y-8">
+            <div className="space-y-4">
+              <span className="text-secondary font-bold tracking-widest uppercase">Infrastructure Development</span>
+              <h2 className="heading-lg">Precision Engineering & Blueprint Design</h2>
+              <p className="text-text-light leading-relaxed text-lg">
+                As a leading civil engineering company in Nigeria, our approach begins with meticulous architectural and structural planning. From modern flow plans to comprehensive blueprints, we ensure every building construction service we provide is founded on exact calculations, technical mastery, and a premium corporate aesthetic.
+              </p>
+            </div>
+            <ul className="space-y-4 text-text-light">
+              <li className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-secondary"></div>
+                <h3 className="font-semibold text-primary inline">Advanced CAD Modeling & Structural Grids</h3>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-secondary"></div>
+                <h3 className="font-semibold text-primary inline">Comprehensive Infrastructure Flow Plans</h3>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-secondary"></div>
+                <h3 className="font-semibold text-primary inline">Integrated Architectural & Civil Solutions</h3>
+              </li>
+            </ul>
+          </div>
+          <div className="lg:w-1/2 w-full">
+            <img 
+              src={architectPlanImg} 
+              alt="Professional architectural flow plan and blueprint design by AHASAS" 
+              className="w-full rounded-2xl shadow-2xl border-4 border-white"
+            />
           </div>
         </div>
       </section>
