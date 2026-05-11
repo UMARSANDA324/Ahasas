@@ -75,10 +75,10 @@ const About = ({ isSection = false }) => {
               <div className="space-y-4">
                 <h2 className="heading-lg">Leading the Future of Construction in Nigeria</h2>
                 <p className="text-text-light text-lg leading-relaxed">
-                  <strong>AHASAS Construction Ventures Limited</strong> is a professional building construction and civil engineering company operating in Kano, Nigeria. Registered as a Limited Liability Company on September 12, 2025 (RC 8817973), we have quickly established ourselves as a benchmark for quality and infrastructure development.
+                  <strong>AHASAS Construction Ventures Limited</strong> is a professional building construction and civil engineering company. Registered as a Limited Liability Company on September 12, 2025 (RC 8817973), we have quickly established ourselves as a benchmark for quality and infrastructure development.
                 </p>
                 <p className="text-text-light leading-relaxed">
-                  Our commitment lies in delivering safe, high-quality, modern, and cost-effective construction services in Kano and across Nigeria. We bridge the gap between traditional engineering standards and innovative modern techniques to create structures that stand the test of time.
+                  Our commitment lies in delivering safe, high-quality, modern, and cost-effective construction services across Nigeria. We bridge the gap between traditional engineering standards and innovative modern techniques to create structures that stand the test of time.
                 </p>
               </div>
 
@@ -137,19 +137,41 @@ const About = ({ isSection = false }) => {
             <h2 className="heading-lg">The Values That Drive Us</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-10 rounded-2xl shadow-lg border border-gray-100 text-center hover:-translate-y-2 transition-all duration-300"
+                className="group relative bg-white p-10 rounded-[2.5rem] shadow-xl border border-slate-100 overflow-hidden hover:-translate-y-4 transition-all duration-500"
               >
-                <div className="text-secondary mb-6 flex justify-center">{value.icon}</div>
-                <h3 className="text-xl font-bold text-primary mb-4">{value.title}</h3>
-                <p className="text-text-light text-sm leading-relaxed">{value.desc}</p>
+                {/* Background Decoration */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#F59E0B]/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#0F172A]/5 rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                
+                {/* Icon Container */}
+                <div className="relative mb-8 inline-block">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#F59E0B] to-[#D97706] blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                  <div className="relative bg-gradient-to-br from-[#0F172A] to-[#1E293B] p-6 rounded-2xl text-[#F59E0B] shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    {value.icon}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="relative space-y-4">
+                  <h3 className="text-2xl font-black text-[#0F172A] tracking-tight group-hover:text-[#F59E0B] transition-colors duration-300">
+                    {value.title}
+                  </h3>
+                  <div className="w-12 h-1 bg-[#F59E0B] rounded-full group-hover:w-20 transition-all duration-500"></div>
+                  <p className="text-slate-500 text-sm leading-relaxed font-medium">
+                    {value.desc}
+                  </p>
+                </div>
+
+                {/* Hover Glass Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
               </motion.div>
             ))}
           </div>

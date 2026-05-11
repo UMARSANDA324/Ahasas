@@ -110,9 +110,6 @@ const Projects = ({ isSection = false }) => {
                       
                       <div className="flex items-center gap-4 md:gap-6 pt-4 md:pt-6 border-t border-white/10">
                         <div className="flex items-center gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/60">
-                          <MapPin size={14} className="text-secondary" /> {project.location}
-                        </div>
-                        <div className="flex items-center gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/60">
                           <Clock size={14} className="text-secondary" /> {project.status}
                         </div>
                       </div>

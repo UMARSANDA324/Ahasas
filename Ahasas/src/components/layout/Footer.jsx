@@ -81,7 +81,7 @@ const Footer = () => {
                 <div className="bg-white/5 p-3 rounded-xl border border-white/10 h-fit">
                   <MapPin className="text-secondary" size={24} />
                 </div>
-                <span className="text-gray-400 font-medium text-sm leading-relaxed">No. 001 Zoo Road Kano, Kano State Nigeria</span>
+                <span className="text-gray-400 font-medium text-sm leading-relaxed">No. 001 Zoo Road, Kano, Nigeria</span>
               </li>
               <li className="flex gap-5">
                 <div className="bg-white/5 p-3 rounded-xl border border-white/10 h-fit">

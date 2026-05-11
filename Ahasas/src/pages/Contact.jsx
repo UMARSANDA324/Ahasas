@@ -7,7 +7,7 @@ const Contact = ({ isSection = false }) => {
   const form = useRef();
   const [formState, setFormState] = useState('idle'); // idle, sending, success, error
   const [errorMessage, setErrorMessage] = useState('');
-  
+
   const [formData, setFormData] = useState({
     from_name: '',
     reply_to: '',
@@ -101,50 +101,74 @@ const Contact = ({ isSection = false }) => {
                 <p className="text-text-light text-lg">Our office is open for consultations. Feel free to reach out via phone, email, or visit our headquarters.</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
-                  { 
-                    icon: <Phone className="text-secondary" />, 
-                    title: "Call Us", 
-                    value: "08038519889", 
+                  {
+                    icon: <Phone size={24} />,
+                    title: "Call Us",
+                    value: "08038519889",
                     sub: "08124365032",
                     isLink: true,
                     link: "tel:08038519889"
                   },
-                  { 
-                    icon: <MessageCircle className="text-green-500" />, 
-                    title: "WhatsApp", 
-                    value: "Chat with us", 
+                  {
+                    icon: <MessageCircle size={24} />,
+                    title: "WhatsApp",
+                    value: "Chat with us",
                     sub: "Available 24/7",
                     isLink: true,
                     link: whatsappUrl,
                     highlight: true
                   },
-                  { 
-                    icon: <Mail className="text-secondary" />, 
-                    title: "Email Us", 
+                  {
+                    icon: <Mail size={24} />,
+                    title: "Email Us",
                     value: "AHASASCONSTRUCTIONVENTURESLTD@GMAIL.COM",
                     sub: "Official Inquiries",
                     isLink: true,
                     link: "mailto:AHASASCONSTRUCTIONVENTURESLTD@GMAIL.COM"
                   },
-                  { 
-                    icon: <MapPin className="text-secondary" />, 
-                    title: "Visit Us", 
-                    value: "No. 001 Zoo Road", 
-                    sub: "Kano, Nigeria" 
+                  {
+                    icon: <MapPin size={24} />,
+                    title: "Visit Us",
+                    value: "No. 001 Zoo Road",
+                    sub: "Kano, Nigeria"
                   },
                 ].map((item, idx) => (
-                  <div key={idx} className={`p-6 rounded-2xl bg-white shadow-lg border border-gray-100 hover:border-secondary transition-all group ${item.highlight ? 'ring-2 ring-green-100' : ''}`}>
-                    <div className="mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
-                    <h4 className="font-bold text-primary mb-1">{item.title}</h4>
-                    {item.isLink ? (
-                      <a href={item.link} className="text-text-light hover:text-secondary transition-colors font-semibold block break-all">{item.value}</a>
-                    ) : (
-                      <p className="text-text-light font-semibold break-words">{item.value}</p>
-                    )}
-                    <p className="text-xs text-gray-400 mt-1">{item.sub}</p>
-                  </div>
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className={`group relative p-8 rounded-3xl bg-white border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden ${item.highlight ? 'ring-2 ring-[#F59E0B]/20' : ''}`}
+                  >
+                    {/* Hover Gradient Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white group-hover:from-slate-100 group-hover:to-slate-50 transition-colors duration-500"></div>
+
+                    {/* Content Container */}
+                    <div className="relative z-10 space-y-4">
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ${item.highlight ? 'bg-[#F59E0B] text-white shadow-lg shadow-[#F59E0B]/20' : 'bg-[#0F172A] text-[#F59E0B] group-hover:bg-[#F59E0B] group-hover:text-white'}`}>
+                        {item.icon}
+                      </div>
+
+                      <div className="space-y-1">
+                        <h4 className="text-sm font-black text-slate-400 uppercase tracking-widest">{item.title}</h4>
+                        {item.isLink ? (
+                          <a href={item.link} className="text-lg font-black text-[#0F172A] hover:text-[#F59E0B] transition-colors block break-all leading-tight">
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="text-lg font-black text-[#0F172A] leading-tight">
+                            {item.value}
+                          </p>
+                        )}
+                        <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">{item.sub}</p>
+                      </div>
+                    </div>
+
+                    {/* Bottom Accent Line */}
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-transparent group-hover:bg-[#F59E0B] transition-all duration-500"></div>
+                  </motion.div>
                 ))}
               </div>
 
@@ -164,10 +188,10 @@ const Contact = ({ isSection = false }) => {
             {/* Contact Form */}
             <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-100 relative">
               <h3 className="text-2xl font-bold text-primary mb-8">Send us a message</h3>
-              
+
               <AnimatePresence mode="wait">
                 {formState === 'success' ? (
-                  <motion.div 
+                  <motion.div
                     key="success"
                     initial={{ opacity: 0, scale: 0.9, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -181,24 +205,24 @@ const Contact = ({ isSection = false }) => {
                       <h4 className="text-3xl font-bold text-primary">Message Sent!</h4>
                       <p className="text-text-light text-lg">Thank you for reaching out. We have received your message and will get back to you within 24 hours.</p>
                     </div>
-                    <button 
-                      onClick={() => setFormState('idle')} 
+                    <button
+                      onClick={() => setFormState('idle')}
                       className="btn-secondary px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-secondary/20 transition-all"
                     >
                       Send Another Message
                     </button>
                   </motion.div>
                 ) : (
-                  <motion.form 
+                  <motion.form
                     key="form"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    onSubmit={handleSubmit} 
+                    onSubmit={handleSubmit}
                     className="space-y-6"
                   >
                     {formState === 'error' && (
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 text-red-600"
@@ -211,72 +235,72 @@ const Contact = ({ isSection = false }) => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-primary uppercase tracking-wider">Your Name</label>
-                        <input 
-                          required 
+                        <input
+                          required
                           name="from_name"
                           value={formData.from_name}
                           onChange={handleChange}
-                          type="text" 
-                          className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" 
-                          placeholder="Full Name" 
+                          type="text"
+                          className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all"
+                          placeholder="Full Name"
                         />
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-primary uppercase tracking-wider">Email Address</label>
-                        <input 
-                          required 
+                        <input
+                          required
                           name="reply_to"
                           value={formData.reply_to}
                           onChange={handleChange}
-                          type="email" 
-                          className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" 
-                          placeholder="email@example.com" 
+                          type="email"
+                          className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all"
+                          placeholder="email@example.com"
                         />
                       </div>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-primary uppercase tracking-wider">Phone Number</label>
-                        <input 
-                          required 
+                        <input
+                          required
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          type="tel" 
-                          className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" 
-                          placeholder="+234 ..." 
+                          type="tel"
+                          className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all"
+                          placeholder="+234 ..."
                         />
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-primary uppercase tracking-wider">Subject</label>
-                        <input 
-                          required 
+                        <input
+                          required
                           name="subject"
                           value={formData.subject}
                           onChange={handleChange}
-                          type="text" 
-                          className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" 
-                          placeholder="Project Inquiry" 
+                          type="text"
+                          className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all"
+                          placeholder="Project Inquiry"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-primary uppercase tracking-wider">Message</label>
-                      <textarea 
-                        required 
+                      <textarea
+                        required
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        rows="5" 
-                        className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all resize-none" 
+                        rows="5"
+                        className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all resize-none"
                         placeholder="Tell us about your project..."
                       ></textarea>
                     </div>
 
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       disabled={formState === 'sending'}
                       className="w-full btn-primary py-4 flex items-center justify-center gap-3 text-lg font-bold disabled:opacity-70 disabled:cursor-not-allowed group relative overflow-hidden"
                     >
@@ -287,7 +311,7 @@ const Contact = ({ isSection = false }) => {
                         </>
                       ) : (
                         <>
-                          Send Message 
+                          Send Message
                           <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </>
                       )}
@@ -303,12 +327,12 @@ const Contact = ({ isSection = false }) => {
       {/* Map Section */}
       <section className="h-[450px] w-full relative group">
         <div className="absolute inset-0 bg-primary/5 pointer-events-none z-10"></div>
-        
+
         {/* Map Fallback/Direct Link Overlay */}
         <div className="absolute top-4 right-4 z-20">
-          <a 
-            href="https://maps.google.com/?q=Zoo+Rd,Kano,Nigeria" 
-            target="_blank" 
+          <a
+            href="https://maps.google.com/?q=Zoo+Rd,Kano,Nigeria"
+            target="_blank"
             rel="noopener noreferrer"
             className="bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-lg border border-gray-100 flex items-center gap-2 text-primary font-bold text-sm hover:bg-white transition-all"
           >
@@ -317,7 +341,7 @@ const Contact = ({ isSection = false }) => {
           </a>
         </div>
 
-        <iframe 
+        <iframe
           title="Google Map"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15617.91032822557!2d8.536130421679688!3d11.969188099999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11ae711736996613%3A0xe979116e0c609559!2sZoo%20Rd%2C%20Kano!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng"
           className="w-full h-full border-none grayscale hover:grayscale-0 transition-all duration-700"
