@@ -5,7 +5,7 @@ import { Building2, Users2, Trophy, Clock, CheckCircle2 } from 'lucide-react';
 const stats = [
   { 
     icon: <Building2 size={32} />, 
-    value: '150+', 
+    value: '17+', 
     label: 'Projects Completed', 
     color: 'from-blue-600 to-primary' 
   },
@@ -17,7 +17,7 @@ const stats = [
   },
   { 
     icon: <Trophy size={32} />, 
-    value: '15+', 
+    value: '3+', 
     label: 'Industry Awards', 
     color: 'from-yellow-400 to-accent' 
   },

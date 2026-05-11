@@ -44,10 +44,6 @@ const FeaturedProjects = () => {
                   {featuredProjects[0].category}
                 </span>
                 <h3 className="text-3xl md:text-4xl font-bold text-white">{featuredProjects[0].title}</h3>
-                <div className="flex items-center gap-2 text-white/80">
-                  <MapPin size={18} className="text-secondary" />
-                  <span>{featuredProjects[0].location}</span>
-                </div>
                 <p className="text-white/60 line-clamp-2 max-w-lg">
                   {featuredProjects[0].description}
                 </p>
@@ -80,10 +76,6 @@ const FeaturedProjects = () => {
                     {project.category}
                   </span>
                   <h3 className="text-xl font-bold text-white">{project.title}</h3>
-                  <div className="flex items-center gap-2 text-white/80 text-sm">
-                    <MapPin size={14} className="text-secondary" />
-                    <span>{project.location}</span>
-                  </div>
                 </div>
               </motion.div>
             ))}
