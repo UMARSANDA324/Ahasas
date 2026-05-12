@@ -27,7 +27,7 @@ const Footer = () => {
               <a href="https://www.facebook.com/profile.php?id=61589323263294" target="_blank" rel="noreferrer" className="bg-white/5 p-3 rounded-xl hover:bg-secondary hover:-translate-y-1 transition-all duration-300 border border-white/10">
                 <Facebook size={22} />
               </a>
-              <a href="#" className="bg-white/5 p-3 rounded-xl hover:bg-secondary hover:-translate-y-1 transition-all duration-300 border border-white/10">
+              <a href="https://www.instagram.com/ahasas_constructions_ventures?igsh=MWM2ZDZyazVpaXF2eA==" target="_blank" rel="noreferrer" className="bg-white/5 p-3 rounded-xl hover:bg-secondary hover:-translate-y-1 transition-all duration-300 border border-white/10">
                 <Instagram size={22} />
               </a>
               <a href="#" className="bg-white/5 p-3 rounded-xl hover:bg-secondary hover:-translate-y-1 transition-all duration-300 border border-white/10">
@@ -96,7 +96,7 @@ const Footer = () => {
                 <div className="bg-white/5 p-3 rounded-xl border border-white/10 h-fit">
                   <Mail className="text-secondary" size={24} />
                 </div>
-                <a href="mailto:AHASASCONSTRUCTIONVENTURESLTD@GMAIL.COM" className="text-gray-400 font-medium break-all text-xs hover:text-secondary transition-colors">AHASASCONSTRUCTIONVENTURESLTD@GMAIL.COM</a>
+                <a href="mailto:ahasasconstructionventuresltd@gmail.com" className="text-gray-400 font-medium break-all text-xs hover:text-secondary transition-colors">ahasasconstructionventuresltd@gmail.com</a>
               </li>
             </ul>
           </div>
@@ -126,18 +126,47 @@ const Footer = () => {
 
             <div>
               <h4 className="text-sm font-black uppercase tracking-widest text-secondary mb-4">Stay Updated</h4>
-              <form className="relative" onSubmit={(e) => e.preventDefault()}>
+              <form 
+                className="relative" 
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const email = e.target.email.value;
+                  if (email) {
+                    const btn = e.target.querySelector('button');
+                    const input = e.target.querySelector('input');
+                    const originalContent = btn.innerHTML;
+                    btn.disabled = true;
+                    btn.innerHTML = '<span class="animate-spin inline-block">◌</span>';
+                    
+                    setTimeout(() => {
+                      btn.innerHTML = '✓';
+                      btn.classList.replace('bg-secondary', 'bg-green-500');
+                      input.value = '';
+                      input.placeholder = 'Subscribed Successfully!';
+                      setTimeout(() => {
+                        btn.innerHTML = originalContent;
+                        btn.classList.replace('bg-green-500', 'bg-secondary');
+                        btn.disabled = false;
+                        input.placeholder = 'Enter email...';
+                      }, 3000);
+                    }, 1000);
+                  }
+                }}
+              >
                 <input 
+                  name="email"
                   type="email" 
+                  required
                   placeholder="Enter email..." 
                   className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-5 focus:outline-none focus:border-secondary text-white font-medium"
                 />
-                <button className="absolute right-2 top-2 bg-secondary p-2.5 rounded-lg hover:bg-secondary-light transition-colors shadow-lg">
+                <button type="submit" className="absolute right-2 top-2 bg-secondary p-2.5 rounded-lg hover:bg-secondary-light transition-all shadow-lg flex items-center justify-center min-w-[40px]">
                   <ArrowRight size={20} />
                 </button>
               </form>
             </div>
           </div>
+
         </div>
 
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">

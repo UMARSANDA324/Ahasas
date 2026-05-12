@@ -123,10 +123,10 @@ const Contact = ({ isSection = false }) => {
                   {
                     icon: <Mail size={24} />,
                     title: "Email Us",
-                    value: "AHASASCONSTRUCTIONVENTURESLTD@GMAIL.COM",
+                    value: "ahasasconstructionventuresltd@gmail.com",
                     sub: "Official Inquiries",
                     isLink: true,
-                    link: "mailto:AHASASCONSTRUCTIONVENTURESLTD@GMAIL.COM"
+                    link: "mailto:ahasasconstructionventuresltd@gmail.com"
                   },
                   {
                     icon: <MapPin size={24} />,

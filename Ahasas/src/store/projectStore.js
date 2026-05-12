@@ -1,5 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import img02 from '../assets/images/02.jpg';
+import img03 from '../assets/images/03.jpg';
+import img04 from '../assets/images/04.jpg';
 import img1 from '../assets/images/Gemini_Generated_Image_6hb6xt6hb6xt6hb6 (2).png';
 import img2 from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (6).png';
 import img3 from '../assets/images/Gemini_Generated_Image_6hb6xt6hb6xt6hb6 (4).png';
@@ -13,35 +16,35 @@ const useProjectStore = create(
       projects: [
         {
           id: '1',
-          title: 'Modern Residential Complex',
-          description: 'A high-end residential development featuring luxury apartments with contemporary architectural aesthetics and sustainable infrastructure.',
-          location: '',
+          title: 'Premium Residential Site',
+          description: 'A major residential project featuring world-class structural engineering and modern architectural finishes.',
+          location: 'Kano, Nigeria',
           category: 'Completed Projects',
           status: 'Completed',
           progress: 100,
-          images: [img4],
+          images: [img02],
           featured: true,
         },
         {
           id: '2',
-          title: 'Urban Highway Expansion',
-          description: 'A major infrastructure achievement involving road expansion, modern drainage systems, and structural bridge engineering for urban connectivity.',
-          location: '',
+          title: 'Infrastructure Development',
+          description: 'Large-scale civil engineering works focusing on robust foundation systems and structural integrity.',
+          location: 'Nigeria',
           category: 'Ongoing Projects',
           status: 'In Progress',
-          progress: 65,
-          images: [img2],
+          progress: 85,
+          images: [img03],
           featured: true,
         },
         {
           id: '3',
-          title: 'Corporate Headquarters Modernization',
-          description: 'Full-scale structural renovation and interior modernization of a high-rise corporate tower including advanced HVAC and electrical system upgrades.',
-          location: '',
-          category: 'Before & After',
+          title: 'Commercial Complex Hub',
+          description: 'Modern commercial structure designed for high-density usage with premium materials and precision planning.',
+          location: 'Nigeria',
+          category: 'Completed Projects',
           status: 'Completed',
           progress: 100,
-          images: [img3],
+          images: [img04],
           featured: true,
         },
         {
