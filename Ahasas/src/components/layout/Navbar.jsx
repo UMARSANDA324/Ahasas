@@ -18,6 +18,7 @@ const Navbar = () => {
     { name: 'Services', path: 'services' },
     { name: 'Projects', path: 'projects' },
     { name: 'Management', path: 'management' },
+    { name: 'Profile', path: '/profile', isRoute: true },
     { name: 'Contact', path: 'contact' },
   ];
 
@@ -40,9 +41,11 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (id) => {
+  const handleNavClick = (id, isRoute = false) => {
     setIsOpen(false);
-    if (location.pathname !== '/') {
+    if (isRoute) {
+      navigate(id);
+    } else if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: id } });
     } else {
       setTimeout(() => {
@@ -94,15 +97,15 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => handleNavClick(link.path)}
+                onClick={() => handleNavClick(link.path, link.isRoute)}
                 className={cn(
                   "font-bold text-sm tracking-widest uppercase transition-all relative group",
                   isScrolled ? "text-primary hover:text-secondary" : "text-white hover:text-secondary",
-                  activeSection === link.path && "text-secondary"
+                  (link.isRoute ? location.pathname === link.path : activeSection === link.path) && "text-secondary"
                 )}
               >
                 {link.name}
-                <span className={cn("absolute -bottom-1 left-0 h-0.5 bg-secondary transition-all", activeSection === link.path ? "w-full" : "w-0 group-hover:w-full")}></span>
+                <span className={cn("absolute -bottom-1 left-0 h-0.5 bg-secondary transition-all", (link.isRoute ? location.pathname === link.path : activeSection === link.path) ? "w-full" : "w-0 group-hover:w-full")}></span>
               </button>
             ))}
             <div className="flex items-center gap-6">
@@ -138,10 +141,10 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <button
                   key={link.name}
-                  onClick={() => handleNavClick(link.path)}
+                  onClick={() => handleNavClick(link.path, link.isRoute)}
                   className={cn(
                     "text-xl font-black tracking-widest uppercase text-left transition-colors",
-                    activeSection === link.path ? "text-secondary" : "text-primary hover:text-secondary"
+                    (link.isRoute ? location.pathname === link.path : activeSection === link.path) ? "text-secondary" : "text-primary hover:text-secondary"
                   )}
                 >
                   {link.name}

@@ -9,6 +9,7 @@ import { AnimatePresence } from 'framer-motion';
 // Pages
 const Landing = lazy(() => import('./pages/Landing'));
 const Admin = lazy(() => import('./pages/Admin'));
+const Profile = lazy(() => import('./pages/Profile'));
 
 const LoadingFallback = () => (
   <div className="h-screen w-full flex items-center justify-center bg-primary">
@@ -34,6 +35,9 @@ function AppContent() {
 
               {/* Admin Dashboard */}
               <Route path="/admin" element={<Admin />} />
+
+              {/* Company Profile */}
+              <Route path="/profile" element={<Profile />} />
 
               {/* Redirects for legacy routes */}
               <Route path="/about" element={<Navigate to="/" state={{ scrollTo: 'about' }} replace />} />

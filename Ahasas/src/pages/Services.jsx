@@ -8,6 +8,7 @@ import projectMgmtImg from '../assets/images/Gemini_Generated_Image_ievsecievsec
 import consultancyImg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (4).png';
 import contractingImg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (3).png';
 import headerBg from '../assets/images/Gemini_Generated_Image_ievsecievsecievs (2).png';
+import architectFlowPlan from '../assets/images/architect_flow_plan.png';
 
 const Services = ({ isSection = false }) => {
   const allServices = [
@@ -186,6 +187,55 @@ const Services = ({ isSection = false }) => {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Architectural Flow Section */}
+      <section className="section-padding bg-gray-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <span className="text-secondary font-black tracking-[0.4em] uppercase text-sm">Design Precision</span>
+              <h2 className="text-4xl md:text-5xl font-black text-primary leading-tight">Architectural & Structural <br /><span className="text-secondary">Flow Planning</span></h2>
+              <p className="text-text-light text-lg leading-relaxed font-medium">
+                Our approach to every project begins with meticulous architectural flow planning. We visualize the structural journey from initial blueprint to final commissioned landmark, ensuring every detail aligns with engineering excellence.
+              </p>
+              <div className="flex flex-col gap-4">
+                {[
+                  "Advanced Structural Visualization",
+                  "Integrated Engineering Workflows",
+                  "Precision-Driven Design Optimization"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4 text-primary font-bold">
+                    <div className="h-2 w-2 bg-secondary rounded-full"></div>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative group"
+            >
+              <div className="absolute -inset-4 bg-secondary/10 rounded-[3rem] blur-2xl group-hover:bg-secondary/20 transition-all duration-700"></div>
+              <div className="relative bg-white p-4 rounded-[2.5rem] shadow-2xl border border-white overflow-hidden">
+                <img 
+                  src={architectFlowPlan} 
+                  alt="Architectural Flow Plan" 
+                  className="w-full rounded-[1.5rem] grayscale hover:grayscale-0 transition-all duration-1000 transform group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

@@ -48,23 +48,34 @@ const Footer = () => {
                 { name: 'Core Services', id: 'services' },
                 { name: 'Project Portfolio', id: 'projects' },
                 { name: 'Leadership Team', id: 'management' },
+                { name: 'Company Profile', path: '/profile', isRoute: true },
                 { name: 'Contact Center', id: 'contact' }
               ].map((item) => (
                 <li key={item.name}>
-                  <Link 
-                    to="/" 
-                    state={{ scrollTo: item.id }} 
-                    className="text-gray-400 hover:text-white flex items-center gap-3 group transition-all font-semibold"
-                    onClick={() => {
-                      if (window.location.pathname === '/') {
-                        const el = document.getElementById(item.id);
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                  >
-                    <ArrowRight size={14} className="text-secondary group-hover:translate-x-1 transition-transform" />
-                    {item.name}
-                  </Link>
+                  {item.isRoute ? (
+                    <Link 
+                      to={item.path}
+                      className="text-gray-400 hover:text-white flex items-center gap-3 group transition-all font-semibold"
+                    >
+                      <ArrowRight size={14} className="text-secondary group-hover:translate-x-1 transition-transform" />
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <Link 
+                      to="/" 
+                      state={{ scrollTo: item.id }} 
+                      className="text-gray-400 hover:text-white flex items-center gap-3 group transition-all font-semibold"
+                      onClick={() => {
+                        if (window.location.pathname === '/') {
+                          const el = document.getElementById(item.id);
+                          if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      <ArrowRight size={14} className="text-secondary group-hover:translate-x-1 transition-transform" />
+                      {item.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
