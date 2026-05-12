@@ -9,28 +9,29 @@ const team = [
     role: "CEO / DIRECTOR PROJECT",
     image: ceoImage,
     bio: "Visionary leader with extensive experience in civil engineering and large-scale project management across Nigeria. Committed to driving infrastructure excellence through innovation and integrity.",
-    icon: <Users size={24} />
+    icon: <Users size={24} />,
+    hasImage: true
   },
   {
     name: "ENGR. ABDULRAHMAN BELLO",
     role: "Senior Project Manager",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800",
     bio: "Senior Project Manager specializing in structural integrity and site coordination for industrial complexes with over 15 years of field experience.",
-    icon: <Shield size={24} />
+    icon: <Shield size={24} />,
+    hasImage: false
   },
   {
     name: "ARCH. ZAINAB SANI",
     role: "Head of Design",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
     bio: "Leading our architectural vision with innovative designs that merge functionality with aesthetic excellence, ensuring every structure is a landmark.",
-    icon: <Award size={24} />
+    icon: <Award size={24} />,
+    hasImage: false
   },
   {
     name: "ENGR. KABIRU MUSA",
     role: "Chief Site Engineer",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800",
     bio: "Expert Site Engineer ensuring technical standards and engineering precision in every structural phase, from foundation to commissioning.",
-    icon: <UserCheck size={24} />
+    icon: <UserCheck size={24} />,
+    hasImage: false
   }
 ];
 
@@ -41,7 +42,7 @@ const Management = ({ isSection = false }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % team.length);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(timer);
   }, []);
 
@@ -62,8 +63,8 @@ const Management = ({ isSection = false }) => {
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
           </div>
           <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-6">
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">Our Leadership Team</h1>
-            <p className="text-xl text-white/70">Meet the experts driving engineering excellence and innovation at AHASAS Construction.</p>
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tighter uppercase">Executive Leadership</h1>
+            <p className="text-xl text-white/70">World-class engineering expertise and strategic leadership driving Nigerian infrastructure forward.</p>
           </div>
         </section>
       )}
@@ -79,23 +80,38 @@ const Management = ({ isSection = false }) => {
       {/* Featured Leader (Slideshow) */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="relative bg-gray-50 rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100">
+          <div className="relative bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100 min-h-[500px]">
             <div className="grid grid-cols-1 lg:grid-cols-2">
-              {/* Image Side */}
-              <div className="relative h-[400px] lg:h-[600px] overflow-hidden">
+              {/* Image Side / Profile Avatar Side */}
+              <div className="relative h-[400px] lg:h-[600px] overflow-hidden bg-slate-50 flex items-center justify-center">
                 <AnimatePresence mode="wait">
-                  <motion.img
-                    key={currentIndex}
-                    src={team[currentIndex].image}
-                    alt={team[currentIndex].name}
-                    initial={{ opacity: 0, scale: 1.1 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.8 }}
-                    className="w-full h-full object-cover"
-                  />
+                  {team[currentIndex].hasImage ? (
+                    <motion.img
+                      key={currentIndex}
+                      src={team[currentIndex].image}
+                      alt={team[currentIndex].name}
+                      initial={{ opacity: 0, scale: 1.1 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.8 }}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <motion.div
+                      key={currentIndex}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.5 }}
+                      className="w-48 h-48 rounded-full bg-primary/5 flex items-center justify-center text-primary border-2 border-primary/10 shadow-inner"
+                    >
+                      <div className="text-6xl font-black opacity-20">
+                        {team[currentIndex].name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                    </motion.div>
+                  )}
                 </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent"></div>
               </div>
 
               {/* Content Side */}
@@ -110,26 +126,27 @@ const Management = ({ isSection = false }) => {
                     className="space-y-6"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="bg-secondary text-white p-3 rounded-xl">
+                      <div className="bg-secondary text-white p-3 rounded-xl shadow-lg">
                         {team[currentIndex].icon}
                       </div>
-                      <span className="text-secondary font-bold tracking-widest uppercase text-sm">
+                      <span className="text-secondary font-black tracking-widest uppercase text-sm">
                         {team[currentIndex].role}
                       </span>
                     </div>
-                    <h2 className="text-4xl lg:text-5xl font-black text-primary leading-tight">
+                    <h2 className="text-3xl lg:text-5xl font-black text-primary leading-tight uppercase tracking-tight">
                       {team[currentIndex].name}
                     </h2>
-                    <p className="text-xl text-text-light leading-relaxed italic">
-                      "{team[currentIndex].bio}"
+                    <div className="w-20 h-1 bg-secondary rounded-full"></div>
+                    <p className="text-xl text-text-light leading-relaxed font-medium">
+                      {team[currentIndex].bio}
                     </p>
                     <div className="flex gap-4 pt-6">
-                      <button className="bg-primary text-white p-4 rounded-full hover:bg-secondary transition-colors duration-300">
-                        <Linkedin size={24} />
-                      </button>
-                      <button className="bg-primary text-white p-4 rounded-full hover:bg-secondary transition-colors duration-300">
-                        <Mail size={24} />
-                      </button>
+                      <a href="#" className="bg-primary text-white p-4 rounded-full hover:bg-secondary transition-all duration-300 shadow-lg hover:-translate-y-1">
+                        <Linkedin size={22} />
+                      </a>
+                      <a href={`mailto:ahasasconstructionventuresltd@gmail.com`} className="bg-primary text-white p-4 rounded-full hover:bg-secondary transition-all duration-300 shadow-lg hover:-translate-y-1">
+                        <Mail size={22} />
+                      </a>
                     </div>
                   </motion.div>
                 </AnimatePresence>
@@ -138,13 +155,13 @@ const Management = ({ isSection = false }) => {
                 <div className="flex gap-4 pt-12">
                   <button 
                     onClick={prevMember}
-                    className="p-4 bg-white shadow-lg rounded-full text-primary hover:bg-secondary hover:text-white transition-all"
+                    className="p-4 bg-white shadow-xl rounded-full text-primary hover:bg-secondary hover:text-white transition-all border border-gray-100"
                   >
                     <ChevronLeft size={24} />
                   </button>
                   <button 
                     onClick={nextMember}
-                    className="p-4 bg-white shadow-lg rounded-full text-primary hover:bg-secondary hover:text-white transition-all"
+                    className="p-4 bg-white shadow-xl rounded-full text-primary hover:bg-secondary hover:text-white transition-all border border-gray-100"
                   >
                     <ChevronRight size={24} />
                   </button>
@@ -158,20 +175,30 @@ const Management = ({ isSection = false }) => {
       {/* Team Grid (Quick View) */}
       <section className="pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {team.map((member, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`relative group rounded-3xl overflow-hidden aspect-square border-4 transition-all duration-500 ${
-                  currentIndex === idx ? 'border-secondary scale-105 shadow-2xl' : 'border-transparent opacity-60 hover:opacity-100'
+                className={`relative group p-8 rounded-[2.5rem] transition-all duration-500 border-2 flex flex-col items-center text-center gap-6 ${
+                  currentIndex === idx ? 'bg-primary border-primary shadow-2xl scale-105' : 'bg-gray-50 border-transparent hover:border-secondary/30'
                 }`}
               >
-                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-left">
-                  <p className="text-white font-bold text-xs truncate">{member.name}</p>
+                <div className={`w-20 h-20 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                  currentIndex === idx ? 'bg-secondary text-white shadow-lg' : 'bg-white text-primary border border-gray-200'
+                }`}>
+                  {member.icon}
                 </div>
+                <div className="space-y-1">
+                  <p className={`font-black text-sm uppercase tracking-tight ${currentIndex === idx ? 'text-white' : 'text-primary'}`}>{member.name}</p>
+                  <p className={`text-[10px] font-bold uppercase tracking-widest ${currentIndex === idx ? 'text-secondary' : 'text-text-light'}`}>{member.role}</p>
+                </div>
+                {currentIndex === idx && (
+                  <motion.div 
+                    layoutId="activePointer"
+                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rotate-45"
+                  />
+                )}
               </button>
             ))}
           </div>

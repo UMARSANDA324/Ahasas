@@ -48,21 +48,48 @@ const Hero = () => {
             <span className="inline-block bg-secondary text-white text-xs md:text-sm font-bold px-6 py-2.5 rounded-full mb-6 tracking-[0.2em] uppercase shadow-2xl border border-white/20">
               Engineering Excellence Since 2025
             </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1] tracking-tight">
-              Delivering Modern <br className="hidden md:block" />
-              <span className="text-secondary drop-shadow-sm">Construction</span> <br className="hidden md:block" />
-              & Infrastructure
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tighter">
+              Welcome to <br />
+              <span className="text-secondary drop-shadow-sm uppercase">AHASAS</span> <br className="hidden md:block" />
+              <span className="text-white/90 text-3xl md:text-5xl lg:text-6xl font-light tracking-normal block mt-4">Construction Ventures Limited</span>
             </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative h-20 md:h-28 overflow-hidden"
+          >
+            <div className="flex flex-col animate-text-slide">
+              {[
+                "Architectural Design",
+                "General Building Construction",
+                "General Contracts",
+                "General Consultancy",
+                "Renovation and Maintenance",
+                "Project Management",
+                "Civil Engineering Works",
+                "General Supply of Building Materials"
+              ].map((service, i) => (
+                <p key={i} className="text-secondary text-2xl md:text-4xl lg:text-5xl font-black h-20 md:h-28 flex items-center uppercase tracking-tight">
+                  {service}
+                </p>
+              ))}
+              {/* Duplicate first item for seamless loop */}
+              <p className="text-secondary text-2xl md:text-4xl lg:text-5xl font-black h-20 md:h-28 flex items-center uppercase tracking-tight">
+                Architectural Design
+              </p>
+            </div>
           </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-white/90 text-xl md:text-2xl leading-relaxed max-w-4xl font-medium border-l-4 border-secondary pl-10 py-2"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-white/70 text-lg md:text-xl leading-relaxed max-w-3xl font-medium"
           >
-            AHASAS Construction Ventures Limited: <br className="hidden lg:block" />
-            Built on Integrity, Engineered for the Future.
+            Built on Integrity, Engineered for the Future. We deliver world-class infrastructure solutions with precision and excellence across Nigeria.
           </motion.p>
 
           <motion.div

@@ -141,19 +141,50 @@ const Services = ({ isSection = false }) => {
             <p className="text-text-light max-w-2xl mx-auto text-lg font-medium">How we maintain the highest standards in construction delivery.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
             <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1.5 bg-gray-50 -z-10"></div>
             {[
-              { step: "01", title: "Strategy", desc: "Aligning project goals with technical feasibility." },
-              { step: "02", title: "Blueprint", desc: "Detailed architectural and structural planning." },
-              { step: "03", title: "Precision", desc: "On-site execution with uncompromising quality." },
-              { step: "04", title: "Assurance", desc: "Rigorous testing and project hand-over." }
+              { step: "01", title: "Strategy", desc: "Aligning project goals with technical feasibility.", icon: <Building2 size={32} /> },
+              { step: "02", title: "Blueprint", desc: "Detailed architectural and structural planning.", icon: <Ruler size={32} /> },
+              { step: "03", title: "Precision", desc: "On-site execution with uncompromising quality.", icon: <HardHat size={32} /> },
+              { step: "04", title: "Assurance", desc: "Rigorous testing and project hand-over.", icon: <Shield size={32} /> }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white p-12 rounded-[3rem] shadow-xl border border-gray-100 text-center space-y-6 hover:border-secondary hover:-translate-y-3 transition-all duration-500 group">
-                <span className="text-6xl font-black text-secondary/10 group-hover:text-secondary/30 transition-colors block leading-none">{item.step}</span>
-                <h4 className="text-xl font-bold text-primary tracking-tight">{item.title}</h4>
-                <p className="text-sm text-text-light font-medium leading-relaxed">{item.desc}</p>
-              </div>
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative bg-white p-10 rounded-[2.5rem] shadow-xl border border-slate-100 overflow-hidden hover:-translate-y-4 transition-all duration-500 text-center"
+              >
+                {/* Background Decoration */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#F59E0B]/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#0F172A]/5 rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                
+                <span className="absolute top-6 right-8 text-4xl font-black text-[#F59E0B]/10 group-hover:text-[#F59E0B]/20 transition-colors z-0">{item.step}</span>
+
+                {/* Icon Container */}
+                <div className="relative mb-8 inline-block z-10">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#F59E0B] to-[#D97706] blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                  <div className="relative bg-gradient-to-br from-[#0F172A] to-[#1E293B] p-6 rounded-2xl text-[#F59E0B] shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    {item.icon}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="relative space-y-4 z-10">
+                  <h3 className="text-2xl font-black text-[#0F172A] tracking-tight group-hover:text-[#F59E0B] transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <div className="w-12 h-1 bg-[#F59E0B] rounded-full mx-auto group-hover:w-20 transition-all duration-500"></div>
+                  <p className="text-slate-500 text-sm leading-relaxed font-medium">
+                    {item.desc}
+                  </p>
+                </div>
+
+                {/* Hover Glass Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+              </motion.div>
             ))}
           </div>
         </div>
